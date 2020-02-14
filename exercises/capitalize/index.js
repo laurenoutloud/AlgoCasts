@@ -12,38 +12,3 @@ function capitalize(str) {
 }
 
 module.exports = capitalize;
-
-function stringCombinations(str) {
-	let result = [''];
-	let count = 0;
-
-    let options = str.match(/{.*?}/g);  //[“{a,b}”,”{d,e}”] 
-    
-    if (!options){
-	    return [str];
-    }
-    options = options.map(s  => s.replace(/[{}]/g, '').split('')); //[[a,b], [d,e]]
-
-    strArray = str.replace(/{.*?}/g, '0').split(''); //[‘0’,’c’,’0’,’f’]
-
-    strArray.forEach( char => {
-	    let tempStrings = [];
-        if (char !== '0'){
-            for (let str of result){
-            tempStrings.push(str + char);
-        }
-
-        } else {
-            options[count].forEach(option => {
-                for (let str of result){
-                tempStrings.push(str + option);
-                }
-            });
-            count++;
-        }
-        result = tempStrings;
-    });
-    return result.sort();
-}
-
-stringCombinations("{a,b}c{d,e}f");

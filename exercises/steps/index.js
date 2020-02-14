@@ -13,10 +13,25 @@
 //       '###'
 //   steps(4)
 //       '#   '
-//       '##  '
+//       '##  'w
 //       '### '
 //       '####'
 
-function steps(n) {}
+//recursive solution
+function steps(n, row = n){
+    if (row === 0){
+        return;
+    } 
+    steps(n, row - 1);
+    console.log('#'.repeat(row) + ' '.repeat(n-row));
+}
+
+/*
+function steps(n) {
+    for (let i = 1; i <= n; i++){
+        console.log('#'.repeat(i) + ' '.repeat(n-i));
+    }
+}
+*/
 
 module.exports = steps;
